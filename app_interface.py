@@ -1,9 +1,11 @@
+from typing import List
+
 import pytesseract
 from PIL import Image
 
 import gradio as gr
 
-def tesseract_ocr(filepath, languages):
+def tesseract_ocr(filepath: str, languages: List[str]):
     image = Image.open(filepath)
     return pytesseract.image_to_string(image=image, lang=', '.join(languages))
 
@@ -32,4 +34,4 @@ demo = gr.Interface(
 )
 
 if __name__ == '__main__':
-    demo.launch(server_port=7861, enable_queue=True)
+    demo.launch()

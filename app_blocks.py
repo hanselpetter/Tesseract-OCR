@@ -1,8 +1,11 @@
-import gradio as gr
+from typing import List
+
 import pytesseract
 from PIL import Image
 
-def tesseract_ocr(filepath, languages=None):
+import gradio as gr
+
+def tesseract_ocr(filepath: str, languages: List[str]=None):
     image = Image.open(filepath)
     return pytesseract.image_to_string(image=image, lang=', '.join(languages) if languages else None)
 
@@ -10,6 +13,7 @@ title = "Tesseract OCR"
 description = "Gradio demo for Tesseract. Tesseract is an open source text recognition (OCR) Engine."
 article = "<p style='text-align: center'><a href='https://tesseract-ocr.github.io/' target='_blank'>Tesseract documentation</a> | <a href='https://github.com/tesseract-ocr/tesseract' target='_blank'>Github Repo</a></p>"
 examples = [
+    ["examples/weird_unicode_math_symbols.png", []]
     ["examples/eurotext.png", ["eng"]],
     ["examples/tesseract_sample.png", ["jpn", "eng"]],
     ["examples/chi.jpg", ["HanS", "HanT"]],
