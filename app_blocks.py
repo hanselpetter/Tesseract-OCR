@@ -30,7 +30,7 @@ with gr.Blocks(title=title) as demo:
         with gr.Column():
             text = gr.Textbox(label="Output")
 
-    btn_submit.click(tesseract_ocr, inputs=[image, languages], outputs=text)
+    btn_submit.click(tesseract_ocr, inputs=[image, languages], outputs=text, api_name="tesseract-ocr")
     btn_clear.add(text)
 
     gr.Examples(
