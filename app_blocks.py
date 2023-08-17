@@ -21,9 +21,9 @@ with gr.Blocks(title=title) as demo:
     with gr.Row():
         with gr.Column():
             image = gr.Image(type="filepath", label="Input")
-            choices = pytesseract.get_languages()
+            language_choices = pytesseract.get_languages()
             with gr.Accordion("Languages", open=False):
-                languages = gr.CheckboxGroup(choices*40, type="value", value=["eng"], label='language')
+                languages = gr.CheckboxGroup(language_choices, type="value", value=["eng"], label='language')
             with gr.Row():
                 btn_clear = gr.ClearButton([image, languages])
                 btn_submit = gr.Button(value="Submit", variant="primary")

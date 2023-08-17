@@ -16,13 +16,13 @@ examples = [
         ['examples/chi.jpg', ['HanS', 'HanT']]
     ]
 
-choices = pytesseract.get_languages()
+language_choices = pytesseract.get_languages()
 
 demo = gr.Interface(
     fn=tesseract_ocr, 
     inputs=[
         gr.Image(type="filepath", label="Input"), 
-        gr.CheckboxGroup(choices*40, type="value", value=['eng'], label='language')
+        gr.CheckboxGroup(language_choices, type="value", value=['eng'], label='language')
         ],
     outputs='text',
     title=title,
