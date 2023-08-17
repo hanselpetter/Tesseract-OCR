@@ -2,7 +2,7 @@ import gradio as gr
 import pytesseract
 from PIL import Image
 
-def tesseract_ocr(filepath, languages):
+def tesseract_ocr(filepath, languages=None):
     image = Image.open(filepath)
     return pytesseract.image_to_string(image=image, lang=', '.join(languages) if languages else None)
 
